@@ -1,0 +1,58 @@
+<%- include('partials/header') %>
+
+<section class="form-card">
+  <h1>Seller Submission</h1>
+  <p class="meta">Submit your property for admin review. Only approved listings go public.</p>
+
+  <% if (errors && errors.length) { %>
+  <ul class="error-list">
+    <% errors.forEach((err) => { %>
+      <li><%= err %></li>
+    <% }) %>
+  </ul>
+  <% } %>
+
+  <form method="POST" action="/seller" enctype="multipart/form-data">
+    <div>
+      <label for="ownerName">Owner Name</label>
+      <input id="ownerName" type="text" name="ownerName" required value="<%= formData.ownerName || '' %>" />
+    </div>
+    <div>
+      <label for="phone">Phone</label>
+      <input id="phone" type="text" name="phone" maxlength="10" required value="<%= formData.phone || '' %>" />
+    </div>
+    <div>
+      <label for="propertyType">Property Type</label>
+      <select id="propertyType" name="propertyType" required>
+        <option value="">Select Type</option>
+        <option <%= formData.propertyType === 'Apartment' ? 'selected' : '' %>>Apartment</option>
+        <option <%= formData.propertyType === 'House' ? 'selected' : '' %>>House</option>
+        <option <%= formData.propertyType === 'Plot' ? 'selected' : '' %>>Plot</option>
+        <option <%= formData.propertyType === 'Commercial' ? 'selected' : '' %>>Commercial</option>
+      </select>
+    </div>
+    <div>
+      <label for="location">Location</label>
+      <input id="location" type="text" name="location" required value="<%= formData.location || '' %>" />
+    </div>
+    <div>
+      <label for="area">Area (sqft)</label>
+      <input id="area" type="number" name="area" min="1" required value="<%= formData.area || '' %>" />
+    </div>
+    <div>
+      <label for="price">Expected Price (₹)</label>
+      <input id="price" type="number" name="price" min="1" required value="<%= formData.price || '' %>" />
+    </div>
+    <div>
+      <label for="description">Description</label>
+      <textarea id="description" name="description" required><%= formData.description || '' %></textarea>
+    </div>
+    <div>
+      <label for="images">Upload Images (Max 5)</label>
+      <input id="images" type="file" name="images" multiple accept="image/jpeg,image/png,image/webp" />
+    </div>
+    <button type="submit" class="btn btn-primary">Submit Property</button>
+  </form>
+</section>
+
+<%- include('partials/footer') %>

@@ -1,0 +1,26 @@
+<%- include('partials/header') %>
+
+<h1 class="section-title">Verified Properties</h1>
+
+<% if (!properties.length) { %>
+  <section class="form-card">
+    <p>No approved listings yet. Please check back soon.</p>
+  </section>
+<% } %>
+
+<section class="card-grid">
+  <% properties.forEach((property) => { %>
+    <article class="card">
+      <img src="<%= property.images[0] || 'https://via.placeholder.com/600x400?text=No+Image' %>" alt="Property image" />
+      <div class="card-body">
+        <h3><%= property.propertyType %> in <%= property.location %></h3>
+        <p class="price">₹ <%= property.price.toLocaleString('en-IN') %></p>
+        <p class="meta"><%= property.area %> sqft • Listed <%= property.createdAt.toDateString() %></p>
+        <br />
+        <a href="/properties/<%= property._id %>" class="btn btn-primary">View Details</a>
+      </div>
+    </article>
+  <% }) %>
+</section>
+
+<%- include('partials/footer') %>
