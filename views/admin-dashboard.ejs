@@ -1,0 +1,48 @@
+<%- include('partials/header') %>
+
+<section class="dashboard-top">
+  <div class="stat-box">
+    <p class="meta">Pending</p>
+    <h2><%= pendingProperties.length %></h2>
+  </div>
+  <div class="stat-box">
+    <p class="meta">Approved</p>
+    <h2><%= approvedCount %></h2>
+  </div>
+  <div class="stat-box">
+    <p class="meta">Rejected</p>
+    <h2><%= rejectedCount %></h2>
+  </div>
+  <div class="stat-box">
+    <form action="/admin/logout" method="POST">
+      <button type="submit" class="btn btn-outline">Logout</button>
+    </form>
+  </div>
+</section>
+
+<h1 class="section-title">Pending Properties</h1>
+
+<% if (!pendingProperties.length) { %>
+  <section class="form-card"><p>No pending properties at the moment.</p></section>
+<% } %>
+
+<section class="card-grid">
+  <% pendingProperties.forEach((property) => { %>
+    <article class="card">
+      <img src="<%= property.images[0] || 'https://via.placeholder.com/600x400?text=No+Image' %>" alt="Property image" />
+      <div class="card-body">
+        <h3><%= property.propertyType %> - <%= property.location %></h3>
+        <p class="meta">Owner: <%= property.ownerName %> | <%= property.phone %></p>
+        <p class="meta"><%= property.area %> sqft • ₹ <%= property.price.toLocaleString('en-IN') %></p>
+        <p><%= property.description %></p>
+        <br />
+        <form action="/admin/property/<%= property._id %>/status" method="POST" style="display:flex; gap:0.5rem;">
+          <button class="btn btn-primary" name="status" value="Approved">Approve</button>
+          <button class="btn btn-dark" name="status" value="Rejected" type="submit">Reject</button>
+        </form>
+      </div>
+    </article>
+  <% }) %>
+</section>
+
+<%- include('partials/footer') %>

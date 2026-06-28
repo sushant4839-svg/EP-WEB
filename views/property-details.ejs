@@ -1,0 +1,21 @@
+<%- include('partials/header') %>
+
+<section class="form-card">
+  <h1><%= property.propertyType %> in <%= property.location %></h1>
+  <p class="price">₹ <%= property.price.toLocaleString('en-IN') %></p>
+  <p class="meta"><%= property.area %> sqft</p>
+  <br />
+  <p><%= property.description %></p>
+  <br />
+  <p><strong>Contact:</strong> <%= property.phone %></p>
+</section>
+
+<section class="card-grid">
+  <% property.images.forEach((image) => { %>
+    <article class="card">
+      <img src="<%= image %>" alt="Property photo" />
+    </article>
+  <% }) %>
+</section>
+
+<%- include('partials/footer') %>

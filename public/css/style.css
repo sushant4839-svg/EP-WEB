@@ -1,0 +1,243 @@
+:root {
+  --yellow: #ffd500;
+  --black: #111111;
+  --white: #ffffff;
+  --light: #f7f7f7;
+  --gray: #6f6f6f;
+  --radius: 16px;
+  --shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Inter', 'Segoe UI', sans-serif;
+  color: var(--black);
+  background-color: var(--light);
+  line-height: 1.5;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.container {
+  width: min(1100px, 92%);
+  margin: 0 auto;
+}
+
+header {
+  background: var(--white);
+  border-bottom: 1px solid #ececec;
+  position: sticky;
+  top: 0;
+  z-index: 20;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.9rem 0;
+}
+
+.brand {
+  font-weight: 800;
+  letter-spacing: 0.2px;
+}
+
+.brand span {
+  color: var(--yellow);
+  background: var(--black);
+  padding: 0.1rem 0.35rem;
+  border-radius: 8px;
+  margin-right: 0.25rem;
+}
+
+.nav-links {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.btn,
+button.btn {
+  border: none;
+  cursor: pointer;
+  display: inline-block;
+  padding: 0.7rem 1.2rem;
+  border-radius: 999px;
+  font-weight: 600;
+}
+
+.btn-primary {
+  background: var(--yellow);
+  color: var(--black);
+}
+
+.btn-dark {
+  background: var(--black);
+  color: var(--white);
+}
+
+.btn-outline {
+  border: 1px solid var(--black);
+  background: transparent;
+}
+
+.hero {
+  background: linear-gradient(120deg, #fff8c4, #fff);
+  border-radius: var(--radius);
+  padding: 3.5rem 2rem;
+  margin: 1.8rem 0;
+  box-shadow: var(--shadow);
+}
+
+.hero h1 {
+  font-size: clamp(1.8rem, 4vw, 3rem);
+  margin-bottom: 1rem;
+}
+
+.hero p {
+  max-width: 700px;
+  color: #333;
+  margin-bottom: 1.3rem;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+}
+
+.section-title {
+  margin: 1.5rem 0 1rem;
+  font-size: 1.6rem;
+}
+
+.card-grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  margin-bottom: 2rem;
+}
+
+.card {
+  background: var(--white);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+.card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  background: #eee;
+}
+
+.card-body {
+  padding: 1rem;
+}
+
+.price {
+  color: var(--black);
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.meta {
+  color: var(--gray);
+  font-size: 0.95rem;
+}
+
+.form-card {
+  background: var(--white);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 1.5rem;
+  margin: 1.5rem 0 2rem;
+}
+
+form {
+  display: grid;
+  gap: 0.9rem;
+}
+
+label {
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+input,
+textarea,
+select {
+  width: 100%;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 0.7rem 0.8rem;
+  font: inherit;
+}
+
+textarea {
+  min-height: 110px;
+}
+
+.error-list {
+  background: #ffe0df;
+  color: #8a1f17;
+  border-radius: 10px;
+  padding: 0.75rem 1rem;
+}
+
+.status-pill {
+  display: inline-block;
+  font-size: 0.8rem;
+  border-radius: 999px;
+  padding: 0.3rem 0.65rem;
+  font-weight: 700;
+}
+
+.status-pending {
+  background: #fff1bd;
+}
+
+.dashboard-top {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+
+.stat-box {
+  background: var(--white);
+  border-radius: var(--radius);
+  padding: 1rem;
+  box-shadow: var(--shadow);
+}
+
+footer {
+  margin-top: 2rem;
+  padding: 1.2rem 0;
+  text-align: center;
+  color: #222;
+  background: var(--white);
+  border-top: 1px solid #ececec;
+}
+
+@media (max-width: 640px) {
+  .nav {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.7rem;
+  }
+
+  .hero {
+    padding: 2.1rem 1.2rem;
+  }
+}
